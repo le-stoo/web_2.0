@@ -1,1 +1,10 @@
 symfony new atl3 --webapp --version=6.4
+
+
+
+
+git 
+////
+git add .
+git commit -m "Your commit message"
+git push origin master
