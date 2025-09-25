@@ -1,6 +1,2 @@
-# Ignore everything in this directory
-*
-
-# But keep the directory structure
-!.gitignore
-!*/
+# Track everything under web2.0
+# This file is intentionally empty
