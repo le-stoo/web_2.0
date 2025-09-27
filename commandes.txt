@@ -1,5 +1,9 @@
 symfony new atl3 --webapp --version=6.4
 
+php bin/console make:controller AuthorController
+
+symfony server:start
+
 
 
 
