@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Readers List{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Readers</h1>
+
+        <a href="{{ path('app_reader_new') }}" class="btn btn-primary mb-3">Create new Reader</a>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Borrowed Books</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for reader in readers %}
+                <tr>
+                    <td>{{ reader.username }}</td>
+                    <td>{{ reader.borrowedBooks|length }}</td>
+                    <td>
+                        <a href="{{ path('app_reader_show', {'id': reader.id}) }}" class="btn btn-info btn-sm">Show</a>
+                        <a href="{{ path('app_reader_edit', {'id': reader.id}) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{{ path('app_reader_borrow', {'id': reader.id}) }}" class="btn btn-success btn-sm">Borrow Book</a>
+                        <form method="post" action="{{ path('app_reader_delete', {'id': reader.id}) }}" style="display: inline-block">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reader.id) }}">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">No readers found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Author{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Edit Author</h1>
+
+        <form method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" value="{{ author.username }}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ author.email }}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="nb_books" class="form-label">Number of Books</label>
+                <input type="number" class="form-control" id="nb_books" name="nb_books" value="{{ author.nbBooks }}" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{{ path('app_author_index') }}" class="btn btn-secondary">Back to list</a>
+        </form>
+    </div>
+{% endblock %}

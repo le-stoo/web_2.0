@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Book{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Create new Book</h1>
+
+        <form method="post">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" class="form-control" id="category" name="category" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" step="0.01" class="form-control" id="price" name="price" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="publication_date" class="form-label">Publication Date</label>
+                <input type="date" class="form-control" id="publication_date" name="publication_date" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="ref" class="form-label">Reference</label>
+                <input type="text" class="form-control" id="ref" name="ref">
+            </div>
+
+            <div class="mb-3">
+                <label for="author" class="form-label">Author</label>
+                <select class="form-control" id="author" name="author" required>
+                    <option value="">Select an author</option>
+                    {% for author in authors %}
+                        <option value="{{ author.id }}">{{ author.username }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="{{ path('app_book_index') }}" class="btn btn-secondary">Back to list</a>
+        </form>
+    </div>
+{% endblock %}

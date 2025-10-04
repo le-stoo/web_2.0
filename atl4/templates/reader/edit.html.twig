@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Reader{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Edit Reader</h1>
+
+        <form method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" value="{{ reader.username }}" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{{ path('app_reader_index') }}" class="btn btn-secondary">Back to list</a>
+        </form>
+    </div>
+{% endblock %}

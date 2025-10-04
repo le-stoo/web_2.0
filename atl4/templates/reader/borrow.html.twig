@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Borrow Books{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Borrow Books for {{ reader.username }}</h1>
+
+        <form method="post">
+            <div class="mb-3">
+                <label for="book" class="form-label">Select Book</label>
+                <select class="form-control" id="book" name="book" required>
+                    <option value="">Choose a book</option>
+                    {% for book in books %}
+                        {% if book not in reader.borrowedBooks %}
+                            <option value="{{ book.id }}">{{ book.title }} (by {{ book.author.username }})</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-success">Borrow</button>
+            <a href="{{ path('app_reader_show', {'id': reader.id}) }}" class="btn btn-secondary">Back to reader</a>
+        </form>
+    </div>
+{% endblock %}
